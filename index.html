@@ -28,6 +28,8 @@
 						style="background-image:url('./BMV.webp');"></button>
 				</div>
 			</div>
+			
+			<hotspot class="annotation">BMV</hotspot>
 	
 		</model-viewer>
 		<script type="module">
@@ -115,6 +117,14 @@
 
 			model-viewer[ar-tracking="not-tracking"] > #ar-failure {
 				display: block;
+			}
+			
+			.annotation {
+				background-color: #888888;
+				position: absolute;
+				transform: translate(10px, 10px);
+				border-radius: 10px;
+				padding: 10px;
 			}
 			
 			.slider {
