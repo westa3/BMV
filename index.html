@@ -22,6 +22,9 @@
     				AR is not tracking!
   			</button>
 			   
+			<label for="show-dimensions">Show Info:</label>
+			<input id="show-dimensions" type="checkbox" checked="true" style="height: 50px; width: 50px">
+			
 			<div class="slider">
     				<div class="slides">
       					<button class="slide selected" onclick="switchSrc(this, 'BMV')" 
@@ -35,8 +38,8 @@
 				<b>Capsid Type:</b> Icosohedral T=3 <br>
 				<b>Enveloped:</b> No <br>
 				<b>What does it infect:</b> Cereal Plants (wheat, rice) <br>
-				<b>Symptoms:</b> Mosiac symptoms (wrinkled leaves and yellow, <br>
-				white or green spotting) and stunt of growth <br>
+				<b>Symptoms:</b> Mosiac symptoms (wrinkled leaves and <br>
+				yellow, white or green spotting) and stunt of growth <br>
 			</hotspot>
 	
 		</model-viewer>
@@ -55,6 +58,24 @@
     				// Keep slider interactions from affecting the XR scene.
     				ev.preventDefault();
   			});
+			
+			const checkbox = modelViewer.querySelector('#show-dimensions');
+			
+			const annotation = modelViewer.querySelector('#annotation');
+			
+			function setVisibility(element) {
+				if (checkbox.checked) {
+					element.classList.remove('hide');
+				} else {
+					element.classList.add('hide');
+				};
+			};
+
+			checkbox.addEventListener('change', () => {
+				modelViewer.querySelectorAll('hotspot').forEach((annotation) => {
+					setVisibility(annotation);
+				});
+			});
 		</script>
 		<style>
 			/* This keeps child nodes hidden while the element loads */
@@ -128,7 +149,6 @@
 			}
 			
 			.annotation {
-				background-color: light-grey;
 				position: absolute;
 				transform: translate(10px, 10px);
 				border-radius: 10px;
@@ -176,6 +196,14 @@
 
 			.slide:focus-visible {
 				outline: 1px solid #4285f4;
+			}
+			
+			.show {
+				--min-hotspot-opacity: 1;
+			}
+
+			.hide {
+				display: none;
 			}
 			
 		</style>
