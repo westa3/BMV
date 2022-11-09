@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<model-viewer src="./BMV.glb" loading="eager" shadow-intensity="1" exposure="0.5" 
-			      ar camera-controls touch-action="pan-y" alt="A 3D model capsid">
+			      ar camera-controls touch-action="pan-y; pan-x" alt="A 3D model capsid">
 			
 			<button slot="ar-button" style="background-color: white; border-radius: 100px; border: none; position: absolute; top: 24px; right: 24px; 
 							width: 100px; height: 50px; ">
@@ -23,9 +23,9 @@
   			</button>
 			
 			<div class="slider">
-				<label for="show-dimensions" sytle="top: 1200px; left: 15px;">Show Info:</label>
-				<input id="show-dimensions" type="checkbox" checked="true" style="height: 50px; width: 50px;">
     				<div class="slides">
+					<label for="show-dimensions" sytle="top: 1200px; left: 15px;">Show Info:</label>
+					<input id="show-dimensions" type="checkbox" checked="true" style="height: 50px; width: 50px;">
       					<button class="slide selected" onclick="switchSrc(this, 'BMV')" 
 						style="background-image:url('./BMV.webp');"></button>
 				</div>
